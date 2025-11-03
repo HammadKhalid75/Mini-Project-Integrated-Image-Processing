@@ -10,7 +10,8 @@ The script processes a grayscale image through **five sequential stages**:
 
 | Step | Operation | MATLAB Function |
 |------|-----------|-----------------|
-| 1 | **Load & convert** to double `[0,1]` | `im2double(rgb2gray(imread(Screenshot_1.png)))` |
+| 1 | **Load & convert** to double `[0,1]` | `im2double(rgb2gray(imread(...)))` ![Unit Ramp](Screenshot_1.png)
+|
 | 2 | **Denoise** – remove salt-and-pepper noise | `medfilt2(I, [3 3])` |
 | 3 | **Enhance contrast** – stretch intensity range | `imadjust(I_filt, [0.2 0.8], [0 1])` |
 | 4 | **Edge detection** – extract strong boundaries | `edge(I_enh, 'Canny', [0.1 0.25])` |
@@ -42,11 +43,3 @@ The script processes a grayscale image through **five sequential stages**:
 | **Pipeline rigidity** | Hard-coded parameters | Add GUI (`uicontrol`) or config file for radius, thresholds, etc. |
 
 ---
-
-## How to Run
-
-```matlab
-% 1. Place your image (e.g., myphoto.jpg) in the folder
-% 2. Edit line 18:
-I = im2double(rgb2gray(imread('myphoto.jpg')));
-% 3. Run the script
